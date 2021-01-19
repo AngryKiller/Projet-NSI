@@ -8,7 +8,7 @@ app.secret_key = b'_5eey"F3z\digouc]/'
 
 @app.route('/')
 def index():
-    if session['user']:
+    if 'user' in session:
         return render_template('index.html', news=getNews())
     else:
         return render_template('index.html', news=getNews())
