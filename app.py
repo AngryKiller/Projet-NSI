@@ -37,6 +37,11 @@ def loginRoute():
 
     return render_template('login.html')
 
+@app.route('/logout')
+def logoutRoute():
+    session.pop('user', None)
+    return redirect('/')
+
 @app.route('/digou')
 def test():
     return 'Digouraye'
