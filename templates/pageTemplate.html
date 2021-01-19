@@ -2,9 +2,10 @@
 <html lang="fr">
 <head>
     {% block head %}
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <title>{% block title %}{% endblock %}</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <title>{% block title %}{% endblock %}</title>
     {% endblock %}
 </head>
 <body>
@@ -27,8 +28,8 @@
           Connexion
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Se connecter</a>
-          <a class="dropdown-item" href="#">Créer un compte</a>
+          <a class="dropdown-item" href="/login">Se connecter</a>
+          <a class="dropdown-item" href="/register">Créer un compte</a>
         </div>
       </li>
   </div>
@@ -36,15 +37,13 @@
     {% endblock %}
 </header>
 <div class="container" id="content">
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <div class="alert alert-primary" role="alert">
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}" role="alert">
           {{ message }}
 </div>
     {% endfor %}
-    </ul>
   {% endif %}
 {% endwith %}
     {% block content %}

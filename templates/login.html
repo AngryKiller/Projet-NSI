@@ -1,0 +1,17 @@
+{% extends "pageTemplate.html" %}
+
+
+{% block content %}
+    <form action="/login" method="post">
+
+        <div class="form-group">
+    <label for="usernameInput">Nom d'utilisateur</label>
+    <input type="text" class="form-control" id="usernameInput" name="username">
+  </div>
+  <div class="form-group">
+    <label for="passwordInput">Mot de passe</label>
+    <input type="password" class="form-control" id="passwordInput" name="password">
+  </div>
+  <button type="submit" class="btn btn-primary">Se connecter</button>
+</form>
+{% endblock %}

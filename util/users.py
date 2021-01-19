@@ -17,3 +17,16 @@ def register(username, mail, password):
     cnx.commit()
     return True
 
+def login(username, password):
+    cursor = cnx.cursor()
+    sql = "SELECT * FROM users WHERE username=%s"
+    val = (username, )
+    cursor.execute(sql, val)
+    userdata = cursor.fetchone()
+    if userdata is None:
+        return False
+    else:
+        if bcrypt.checkpw(password.encode("utf-8"), userdata[3].encode("utf-8")):
+            return userdata[0]
+        else:
+            return False
