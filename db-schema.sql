@@ -7,7 +7,7 @@
 #
 # Hôte: localhost (MySQL 5.5.5-10.5.8-MariaDB)
 # Base de données: projet-nsi
-# Temps de génération: 2021-01-18 15:13:19 +0000
+# Temps de génération: 2021-01-20 17:06:14 +0000
 # ************************************************************
 
 
@@ -43,8 +43,9 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL DEFAULT '',
+  `mail` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL DEFAULT '',
-  `admin` int(11) DEFAULT NULL,
+  `admin` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 

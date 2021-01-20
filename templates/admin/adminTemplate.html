@@ -12,7 +12,7 @@
 <header>
     {% block header %}
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Blog</a>
+  <a class="navbar-brand" href="#">Administration</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -24,26 +24,13 @@
       </li>
     </ul>
       <div class="nav-item dropdown">
-          {% if user %}
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{ user[1] }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {% if user[4] %}
-                 <a href='/admin' class='dropdown-item'>Administration</a>
-            {% endif %}
           <a class="dropdown-item" href="#">Mon profil</a>
           <a class="dropdown-item" href="/logout">Se déconnecter</a>
         </div>
-          {% else %}
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Connexion
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/login">Se connecter</a>
-          <a class="dropdown-item" href="/register">Créer un compte</a>
-        </div>
-          {% endif %}
       </div>
   </div>
 </nav>

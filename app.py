@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, redirect, flash, session
 from util.news import getNews
-from util.users import register, login, getUser
+from util.users import register, login, getUser, isAdmin
 
 app = Flask(__name__, static_url_path='/static')
 
 app.secret_key = b'_5eey"F3z\digouc]/'
+
 
 @app.route('/')
 def index():
@@ -12,6 +13,7 @@ def index():
         return render_template('index.html', news=getNews(), user=getUser(session['user']))
     else:
         return render_template('index.html', news=getNews())
+
 
 @app.route('/register', methods=['POST', 'GET'])
 def registerRoute():
@@ -23,6 +25,7 @@ def registerRoute():
         return render_template('register.html')
 
     return render_template('register.html')
+
 
 @app.route('/login', methods=['POST', 'GET'])
 def loginRoute():
@@ -37,10 +40,21 @@ def loginRoute():
 
     return render_template('login.html')
 
+
 @app.route('/logout')
 def logoutRoute():
     session.pop('user', None)
     return redirect('/')
+
+
+@app.route('/admin')
+def adminRoute():
+    print(isAdmin(session['user']))
+    if 'user' in session and isAdmin(session['user']):
+        return render_template('admin/index.html', user=getUser(session['user']))
+    else:
+        return redirect('/')
+
 
 @app.route('/digou')
 def test():

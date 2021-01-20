@@ -16,6 +16,7 @@ def register(username, mail, password):
     cnx.commit()
     return True
 
+
 def login(username, password):
     cursor = cnx.cursor()
     sql = "SELECT * FROM users WHERE username=%s"
@@ -30,9 +31,18 @@ def login(username, password):
         else:
             return False
 
-def getUser(userId):
+
+def getUser(userid):
     cursor = cnx.cursor()
     sql = "SELECT * FROM users WHERE id=%s"
-    val = (userId, )
+    val = (userid, )
     cursor.execute(sql, val)
     return cursor.fetchone()
+
+
+def isAdmin(userid):
+    cursor = cnx.cursor()
+    sql = "SELECT admin FROM users WHERE id=%s"
+    val = (userid, )
+    cursor.execute(sql, val)
+    return cursor.fetchone()[0]
