@@ -23,7 +23,16 @@
         <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-      <li class="nav-item dropdown">
+      <div class="nav-item dropdown">
+          {% if user %}
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ user[1] }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Mon profil</a>
+          <a class="dropdown-item" href="/logout">Se déconnecter</a>
+        </div>
+          {% else %}
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Connexion
         </a>
@@ -31,7 +40,8 @@
           <a class="dropdown-item" href="/login">Se connecter</a>
           <a class="dropdown-item" href="/register">Créer un compte</a>
         </div>
-      </li>
+          {% endif %}
+      </div>
   </div>
 </nav>
     {% endblock %}

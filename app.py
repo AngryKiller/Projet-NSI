@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, flash, session
 from util.news import getNews
-from util.users import register, login
+from util.users import register, login, getUser
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -9,7 +9,7 @@ app.secret_key = b'_5eey"F3z\digouc]/'
 @app.route('/')
 def index():
     if 'user' in session:
-        return render_template('index.html', news=getNews())
+        return render_template('index.html', news=getNews(), user=getUser(session['user']))
     else:
         return render_template('index.html', news=getNews())
 

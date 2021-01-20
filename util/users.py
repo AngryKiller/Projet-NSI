@@ -6,7 +6,6 @@ cnx = mysql.connector.connect(user='root', password='digouraye',
                               database='projet-nsi')
 
 
-
 def register(username, mail, password):
     salt = bcrypt.gensalt()
     hashedpw = bcrypt.hashpw(password.encode("utf-8"), salt)
@@ -30,3 +29,10 @@ def login(username, password):
             return userdata[0]
         else:
             return False
+
+def getUser(userId):
+    cursor = cnx.cursor()
+    sql = "SELECT * FROM users WHERE id=%s"
+    val = (userId, )
+    cursor.execute(sql, val)
+    return cursor.fetchone()
