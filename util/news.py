@@ -8,5 +8,5 @@ cnx = mysql.connector.connect(user='root', password='digouraye',
 
 def getNews():
     cursor = cnx.cursor()
-    cursor.execute("SELECT * FROM news")
+    cursor.execute("SELECT * FROM news ORDER BY id DESC")
     return cursor.fetchall()
