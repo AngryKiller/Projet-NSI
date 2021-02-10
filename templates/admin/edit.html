@@ -1,0 +1,19 @@
+{% extends "admin/adminTemplate.html" %}
+
+{% block content %}
+    <h1 class="title">Ajouter une actualité</h1>
+    <br>
+    <form action="/admin/news/add" method="post">
+      <div class="form-group">
+    <label for="newsTitle">Titre de l'actualité</label>
+    <input type="text" class="form-control" id="newsTitle" name="newsTitle">
+  </div>
+      <div class="form-group">
+    <label for="newsContent">Contenu de l'actualité</label>
+    <textarea class="form-control" id="newsContent" rows="3" name="newsContent"></textarea>
+  </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </div>
+    </form>
+{% endblock %}

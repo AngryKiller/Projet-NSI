@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, flash, session
-from util.news import getNews, deleteNews
+from util.news import getNews, deleteNews, addNews
 from util.users import register, login, getUser, isAdmin
 
 app = Flask(__name__, static_url_path='/static')
@@ -68,6 +68,22 @@ def deletenewsroute():
         deleteNews(id)
         flash("L'actualité a été supprimée", 'success')
         return redirect('/admin/news')
+    else:
+        return redirect('/')
+
+@app.route('/admin/news/add', methods=['POST', 'GET'])
+def addnewsroute():
+    if 'user' in session and isAdmin(session['user']):
+        if request.method == "POST":
+            res = addNews(request.form['newsTitle'], request.form['newsContent'], session['user'])
+            if res == True:
+                flash("L'actualité a été ajoutée", "success")
+                return redirect('/admin/news')
+            else:
+                flash("Une erreur est survenue lors de l'ajout", "danger")
+                return redirect('/admin/news')
+        else:
+            return render_template('admin/edit.html', user=getUser(session['user']))
     else:
         return redirect('/')
 
