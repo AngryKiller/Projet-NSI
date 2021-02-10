@@ -1,0 +1,29 @@
+{% extends "admin/adminTemplate.html" %}
+
+{% block content %}
+    <h1 class="title">Actualités</h1>
+    <br>
+    <button type="button" class="btn btn-lg btn-block btn-outline-success">Ajouter un article</button>
+    <br>
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Titre</th>
+      <th scope="col">Auteur</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for article in news: %}
+    <tr>
+      <th scope="row">{{ article[1] }}</th>
+      <td>Digouraye</td>
+      <td>
+  <a href="/admin/news/edit/{{ article[0] }}"  class="btn btn-primary">Modifier</a>
+  <a href="/admin/news/delete/{{ article[0] }}" class="btn btn-danger">Supprimer</a>
+</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -49,12 +49,17 @@ def logoutRoute():
 
 @app.route('/admin')
 def adminRoute():
-    print(isAdmin(session['user']))
     if 'user' in session and isAdmin(session['user']):
         return render_template('admin/index.html', user=getUser(session['user']))
     else:
         return redirect('/')
 
+@app.route('/admin/news')
+def adminNewsRoute():
+    if 'user' in session and isAdmin(session['user']):
+        return render_template('admin/news.html', user=getUser(session['user']), news=getNews())
+    else:
+        return redirect('/')
 
 @app.route('/digou')
 def test():
