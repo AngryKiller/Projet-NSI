@@ -1,19 +1,22 @@
 {% extends "admin/adminTemplate.html" %}
 
 {% block content %}
-    <h1 class="title">Ajouter une actualité</h1>
+    <h1 class="title">{% if edit: %}Modifier {% else: %}Ajouter {% endif %}un article</h1>
     <br>
-    <form action="/admin/news/add" method="post">
+    <form action="/admin/news/{% if edit: %}edit{% else: %}add{% endif %}" method="post">
+    {% if edit: %}
+        <input type="hidden" name="id" value="{{ article[0] }}">
+    {% endif %}
       <div class="form-group">
-    <label for="newsTitle">Titre de l'actualité</label>
-    <input type="text" class="form-control" id="newsTitle" name="newsTitle">
+    <label for="newsTitle">Titre de l'article</label>
+    <input type="text" class="form-control" id="newsTitle" name="newsTitle"{% if edit: %}value="{{ article[1] }}"{% endif %}>
   </div>
       <div class="form-group">
-    <label for="newsContent">Contenu de l'actualité</label>
-    <textarea class="form-control" id="newsContent" rows="3" name="newsContent"></textarea>
+    <label for="newsContent">Contenu de l'article</label>
+    <textarea class="form-control" id="newsContent" rows="3" name="newsContent">{% if edit: %}{{ article[2] }}{% endif %}</textarea>
   </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <button type="submit" class="btn btn-primary">{% if edit: %}Modifier {% else: %}Ajouter {% endif %}</button>
     </div>
     </form>
 {% endblock %}

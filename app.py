@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, flash, session
-from util.news import getNews, deleteNews, addNews
+from util.news import getNews, deletearticle, addarticle, getArticle, editarticle
 from util.users import register, login, getUser, isAdmin
 
 app = Flask(__name__, static_url_path='/static')
@@ -65,7 +65,7 @@ def adminNewsRoute():
 def deletenewsroute():
     if 'user' in session and isAdmin(session['user']):
         id = request.args.get('id', '')
-        deleteNews(id)
+        deletearticle(id)
         flash("L'actualité a été supprimée", 'success')
         return redirect('/admin/news')
     else:
@@ -75,7 +75,7 @@ def deletenewsroute():
 def addnewsroute():
     if 'user' in session and isAdmin(session['user']):
         if request.method == "POST":
-            res = addNews(request.form['newsTitle'], request.form['newsContent'], session['user'])
+            res = addarticle(request.form['newsTitle'], request.form['newsContent'], session['user'])
             if res == True:
                 flash("L'actualité a été ajoutée", "success")
                 return redirect('/admin/news')
@@ -84,6 +84,23 @@ def addnewsroute():
                 return redirect('/admin/news')
         else:
             return render_template('admin/edit.html', user=getUser(session['user']))
+    else:
+        return redirect('/')
+
+@app.route('/admin/news/edit', methods=['POST', 'GET'])
+def editnewsroute():
+    if 'user' in session and isAdmin(session['user']):
+        if request.method == "POST":
+            res = editarticle(request.form['id'], request.form['newsTitle'], request.form['newsContent'])
+            if res == True:
+                flash("L'actualité a été modifiée", "success")
+                return redirect('/admin/news')
+            else:
+                flash("Une erreur est survenue lors de la modification", "danger")
+                return redirect('/admin/news')
+        else:
+            id = request.args.get('id', '')
+            return render_template('admin/edit.html', user=getUser(session['user']), article=getArticle(id), edit=True)
     else:
         return redirect('/')
 
