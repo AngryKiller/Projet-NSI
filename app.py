@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, flash, session
 from util.news import getNews, deletearticle, addarticle, getArticle, editarticle
 from util.users import register, login, getUser, isAdmin
+from util.shorten import shortenGuest, getlinkfromid
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -103,6 +104,22 @@ def editnewsroute():
             return render_template('admin/edit.html', user=getUser(session['user']), article=getArticle(id), edit=True)
     else:
         return redirect('/')
+
+
+@app.route('/shorten', methods=['POST'])
+def shorten():
+    if request.form['url']:
+        res = shortenGuest(request.form['url'])
+        if res:
+            flash("Voici votre lien: "+res, "blue")
+            return redirect('/')
+
+@app.route('/l/<shortid>')
+def shortRedirect(shortid):
+    print(getlinkfromid(shortid))
+    url = getlinkfromid(shortid)[0]
+    return redirect(url)
+
 
 
 

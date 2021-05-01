@@ -1,6 +1,12 @@
 {% extends "pageTemplate.html" %}
 {% block content %}
     <h1>Site incroyable</h1>
+    <form action="/shorten" method="post">
+      <input type="text" name="url" required>
+    <button class="btn btn-blue" type="submit">Raccourcir</button>
+    </form>
+
+
     {% for article in news: %}
 
 <div class="card news">
