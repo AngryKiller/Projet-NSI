@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, redirect, flash, session
+from flask import Flask, render_template, request, redirect, flash, session, url_for
 from util.news import getNews, deletearticle, addarticle, getArticle, editarticle
 from util.users import register, login, getUser, isAdmin
 from util.shorten import shortenGuest, getlinkfromid
+from util.settings import getSettings
+import os
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -11,9 +13,9 @@ app.secret_key = b'_5eey"F3z\digouc]/'
 @app.route('/')
 def index():
     if 'user' in session:
-        return render_template('index.html', news=getNews(), user=getUser(session['user']))
+        return render_template('index.html', news=getNews(), user=getUser(session['user']), settings=getSettings())
     else:
-        return render_template('index.html', news=getNews())
+        return render_template('index.html', news=getNews(), settings=getSettings())
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -120,6 +122,18 @@ def shortRedirect(shortid):
     url = getlinkfromid(shortid)[0]
     return redirect(url)
 
+@app.context_processor
+def override_url_for():
+    return dict(url_for=dated_url_for)
+
+def dated_url_for(endpoint, **values):
+    if endpoint == 'static':
+        filename = values.get('filename', None)
+        if filename:
+            file_path = os.path.join(app.root_path,
+                                 endpoint, filename)
+            values['q'] = int(os.stat(file_path).st_mtime)
+    return url_for(endpoint, **values)
 
 
 

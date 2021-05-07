@@ -202,6 +202,7 @@ a {
 
 .card-market {
     background-color: #34495e;
+    border-radius: 3px;
     margin: 20px;
 }
 
@@ -217,4 +218,16 @@ a {
 
 .text-center{
     text-align: center;
+}
+
+.title{
+    text-align: center;
+    font-size: 40px;
+}
+
+.description{
+    border: 1px solid lightgrey;
+    padding: 10px;
+    font-family: 'Montserrat';
+    border-radius: 3px;
 }
