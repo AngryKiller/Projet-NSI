@@ -73,7 +73,7 @@ h4,
 h5,
 h6 {
     width: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
 hr {
@@ -93,6 +93,13 @@ a {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.btn {
+    padding: 10px;
+    text-align: center;
+    transition: 0.5s;
+    height: 100%;
 }
 
 .btn-green {
@@ -168,4 +175,46 @@ a {
 .alert-blue {
     background-color: #3498db;
     color: white;
+}
+
+.card-body {
+    padding: 10px;
+    padding-bottom: 25px;
+}
+
+.card-body>small {
+    color: white;
+}
+
+.card-title {
+    color: white;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.card-title::after {
+    color: white;
+}
+
+.card {
+    display: block;
+}
+
+.card-market {
+    background-color: #34495e;
+    margin: 20px;
+}
+
+.card-content>p {
+    color: white;
+    font-family: 'Montserrat';
+    padding-bottom: 10px;
+}
+.card-content>small{
+        color: white;
+    font-family: 'Montserrat';
+}
+
+.text-center{
+    text-align: center;
 }
