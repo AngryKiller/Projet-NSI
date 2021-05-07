@@ -2,22 +2,21 @@
 
 
 {% block content %}
-    <form action="/register" method="post">
-
+    <h1 class="title">Créer un compte</h1>
+    <div class="form">
+        <form action="/register" method="post">
         <div class="form-group">
-    <label for="usernameInput">Nom d'utilisateur</label>
-    <input type="text" class="form-control" id="usernameInput" name="username">
+    <input type="text" class="form-control" id="usernameInput" name="username" placeholder="Nom d'utilisateur">
   </div>
 
   <div class="form-group">
-    <label for="mailInput">Adresse mail</label>
-    <input type="email" class="form-control" id="mailInput" name="mail">
+    <input type="email" class="form-control" id="mailInput" name="mail" placeholder="Adresse mail">
   </div>
 
   <div class="form-group">
-    <label for="passwordInput">Mot de passe</label>
-    <input type="password" class="form-control" id="passwordInput" name="password">
+    <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Mot de passe">
   </div>
-  <button type="submit" class="btn btn-primary">S'inscrire</button>
+  <button type="submit" class="btn btn-blue">S'inscrire</button>
 </form>
+    </div>
 {% endblock %}

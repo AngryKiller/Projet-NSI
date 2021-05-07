@@ -36,8 +36,11 @@ def loginRoute():
         user = login(request.form['username'], request.form['password'])
         if user:
             session['user'] = user
-            flash('Vous êtes connecté!', 'success')
+            flash('Vous êtes connecté!', 'green')
             return redirect('/')
+        else:
+            flash('Utilisateur ou mot de passe incorrect', 'red')
+            return redirect('/login')
     else:
         return render_template('login.html')
 
