@@ -6,3 +6,4 @@ __pycache__
 
 static/img/*
 !static/img/.gitkeep
+db-schema-data.sql

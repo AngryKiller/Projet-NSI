@@ -7,7 +7,7 @@
 #
 # Hôte: localhost (MySQL 5.5.5-10.5.8-MariaDB)
 # Base de données: projet-nsi
-# Temps de génération: 2021-01-20 17:06:14 +0000
+# Temps de génération: 2021-05-08 18:29:02 +0000
 # ************************************************************
 
 
@@ -20,6 +20,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
+# Affichage de la table images
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `images`;
+
+CREATE TABLE `images` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+
+
+# Affichage de la table links
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `links`;
+
+CREATE TABLE `links` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `shorten` varchar(255) NOT NULL DEFAULT '',
+  `url` text NOT NULL,
+  `user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+
+
 # Affichage de la table news
 # ------------------------------------------------------------
 
@@ -30,6 +59,21 @@ CREATE TABLE `news` (
   `title` varchar(255) NOT NULL DEFAULT '',
   `content` text NOT NULL,
   `author` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+
+
+# Affichage de la table settings
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `settings`;
+
+CREATE TABLE `settings` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `description` text NOT NULL,
+  `filename` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
