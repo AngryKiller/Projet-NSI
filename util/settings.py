@@ -1,6 +1,7 @@
 import mysql.connector
 from dotenv import load_dotenv
 from os import getenv
+
 load_dotenv()
 
 cnx = mysql.connector.connect(user=getenv("DB_USER"), password=getenv("DB_PASSWORD"),
@@ -19,7 +20,7 @@ def updateSettings(title, desc, banner):
     if banner:
         cursor = cnx.cursor()
         sql = "UPDATE settings SET title=%s, description=%s, filename=%s WHERE id=1"
-        val = (title, desc, banner, )
+        val = (title, desc, banner,)
         cursor.execute(sql, val)
         return True
     else:

@@ -6,24 +6,24 @@
     <a href="/admin/news/add" class="btn btn-xl btn-green btn-block">Ajouter un article</a>
     <hr>
     <table class="table-full">
-  <thead>
-    <tr>
-      <th scope="col">Titre</th>
-      <th scope="col">Auteur</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for article in news: %}
-    <tr>
-      <th scope="row">{{ article[1] }}</th>
-      <td>{{ idusername(article[3]) }}</td>
-      <td>
-  <a href="/admin/news/edit?id={{ article[0] }}"  class="btn btn-blue">Modifier</a>
-  <a href="/admin/news/delete?id={{ article[0] }}" class="btn btn-red">Supprimer</a>
-</td>
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+        <thead>
+        <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in news: %}
+            <tr>
+                <th scope="row">{{ article[1] }}</th>
+                <td>{{ idusername(article[3]) }}</td>
+                <td>
+                    <a href="/admin/news/edit?id={{ article[0] }}" class="btn btn-blue">Modifier</a>
+                    <a href="/admin/news/delete?id={{ article[0] }}" class="btn btn-red">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

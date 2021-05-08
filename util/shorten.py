@@ -4,6 +4,7 @@ import string
 import random
 from dotenv import load_dotenv
 from os import getenv
+
 load_dotenv()
 
 cnx = mysql.connector.connect(user=getenv("DB_USER"), password=getenv("DB_PASSWORD"),
@@ -21,9 +22,10 @@ def shortenGuest(url):
     cnx.commit()
     return shortid
 
+
 def getlinkfromid(id):
     cursor = cnx.cursor()
     sql = "SELECT url FROM links WHERE shorten=%s"
-    val = (id, )
+    val = (id,)
     cursor.execute(sql, val)
     return cursor.fetchone()

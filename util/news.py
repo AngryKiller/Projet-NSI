@@ -21,10 +21,11 @@ def getArticle(id):
     cursor.execute(sql, val)
     return cursor.fetchone()
 
+
 def deletearticle(id):
     cursor = cnx.cursor()
     sql = "DELETE FROM news WHERE id=%s"
-    val = (id, )
+    val = (id,)
     cursor.execute(sql, val)
     return True
 

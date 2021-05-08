@@ -11,9 +11,11 @@ import os
 UPLOAD_FOLDER = 'static/img'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -22,6 +24,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = b'_5eey"F3z\digouc]/'
 
 app.jinja_env.globals.update(idusername=idusername)
+
+
 @app.route('/')
 def index():
     if 'user' in session:
@@ -64,10 +68,12 @@ def logoutRoute():
     session.pop('user', None)
     return redirect('/')
 
+
 @app.route('/img/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
+
 
 @app.route('/admin', methods=['POST', 'GET'])
 def adminRoute():
@@ -93,9 +99,11 @@ def adminRoute():
     else:
         return redirect('/')
 
+
 @app.route('/admin/')
 def adminRedirect():
     return redirect('/admin')
+
 
 @app.route('/admin/news')
 def adminNewsRoute():
@@ -103,6 +111,7 @@ def adminNewsRoute():
         return render_template('admin/news.html', user=getUser(session['user']), news=getNews())
     else:
         return redirect('/')
+
 
 @app.route('/admin/news/delete')
 def deletenewsroute():
@@ -113,6 +122,7 @@ def deletenewsroute():
         return redirect('/admin/news')
     else:
         return redirect('/')
+
 
 @app.route('/admin/news/add', methods=['POST', 'GET'])
 def addnewsroute():
@@ -129,6 +139,7 @@ def addnewsroute():
             return render_template('admin/edit.html', user=getUser(session['user']))
     else:
         return redirect('/')
+
 
 @app.route('/admin/news/edit', methods=['POST', 'GET'])
 def editnewsroute():
@@ -153,8 +164,9 @@ def shorten():
     if request.form['url']:
         res = shortenGuest(request.form['url'])
         if res:
-            flash("Voici votre lien: "+res, "blue")
+            flash("Voici votre lien: " + res, "blue")
             return redirect('/')
+
 
 @app.route('/l/<shortid>')
 def shortRedirect(shortid):
@@ -162,18 +174,21 @@ def shortRedirect(shortid):
     url = getlinkfromid(shortid)[0]
     return redirect(url)
 
+
 @app.context_processor
 def override_url_for():
     return dict(url_for=dated_url_for)
+
 
 def dated_url_for(endpoint, **values):
     if endpoint == 'static':
         filename = values.get('filename', None)
         if filename:
             file_path = os.path.join(app.root_path,
-                                 endpoint, filename)
+                                     endpoint, filename)
             values['q'] = int(os.stat(file_path).st_mtime)
     return url_for(endpoint, **values)
+
 
 @app.route('/images')
 def images():
@@ -189,6 +204,7 @@ def adminImages():
         return render_template('admin/images.html', images=getImages(), user=getUser(session['user']))
     else:
         return redirect('/')
+
 
 @app.route('/admin/images/delete')
 def deleteimageroute():

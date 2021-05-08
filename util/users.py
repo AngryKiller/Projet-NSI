@@ -2,6 +2,7 @@ import mysql.connector
 import bcrypt
 from dotenv import load_dotenv
 from os import getenv
+
 load_dotenv()
 
 cnx = mysql.connector.connect(user=getenv("DB_USER"), password=getenv("DB_PASSWORD"),
@@ -23,7 +24,7 @@ def register(username, mail, password):
 def login(username, password):
     cursor = cnx.cursor()
     sql = "SELECT * FROM users WHERE username=%s"
-    val = (username, )
+    val = (username,)
     cursor.execute(sql, val)
     userdata = cursor.fetchone()
     if userdata is None:
@@ -38,7 +39,7 @@ def login(username, password):
 def getUser(userid):
     cursor = cnx.cursor()
     sql = "SELECT * FROM users WHERE id=%s"
-    val = (userid, )
+    val = (userid,)
     cursor.execute(sql, val)
     return cursor.fetchone()
 
@@ -46,13 +47,14 @@ def getUser(userid):
 def isAdmin(userid):
     cursor = cnx.cursor()
     sql = "SELECT admin FROM users WHERE id=%s"
-    val = (userid, )
+    val = (userid,)
     cursor.execute(sql, val)
     return cursor.fetchone()[0]
+
 
 def idusername(userid):
     cursor = cnx.cursor()
     sql = "SELECT username FROM users WHERE id=%s"
-    val = (userid, )
+    val = (userid,)
     cursor.execute(sql, val)
     return cursor.fetchone()[0]

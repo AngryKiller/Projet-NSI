@@ -2,19 +2,21 @@
 
 
 {% block content %}
-        <h1 class="title">Connexion</h1>
+    <h1 class="title">Connexion</h1>
 
     <hr>
     <div class="form">
         <form action="/login" method="post">
 
-        <div class="form-group">
-    <input type="text" class="form-control" id="usernameInput" name="username" placeholder="Nom d'utilisateur">
-  </div>
-  <div class="form-group">
-    <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Mot de passe">
-  </div>
-  <button type="submit" class="btn btn-blue">Se connecter</button>
-</form>
+            <div class="form-group">
+                <input type="text" class="form-control" id="usernameInput" name="username"
+                       placeholder="Nom d'utilisateur">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="passwordInput" name="password"
+                       placeholder="Mot de passe">
+            </div>
+            <button type="submit" class="btn btn-blue">Se connecter</button>
+        </form>
     </div>
 {% endblock %}

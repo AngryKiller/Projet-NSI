@@ -6,22 +6,22 @@
     <a href="/admin/images/add" class="btn btn-xl btn-green btn-block">Ajouter une image</a>
     <hr>
     <table class="table-full">
-  <thead>
-    <tr>
-      <th scope="col">Titre</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for image in images: %}
-    <tr>
-      <th scope="row">{{ image[1] }}</th>
-      <td>
-  <a href="/img/{{ image[2] }}"  class="btn btn-blue" target="_blank">Voir</a>
-  <a href="/admin/images/delete?id={{ image[0] }}" class="btn btn-red">Supprimer</a>
-</td>
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+        <thead>
+        <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for image in images: %}
+            <tr>
+                <th scope="row">{{ image[1] }}</th>
+                <td>
+                    <a href="/img/{{ image[2] }}" class="btn btn-blue" target="_blank">Voir</a>
+                    <a href="/admin/images/delete?id={{ image[0] }}" class="btn btn-red">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

@@ -12,14 +12,14 @@
 <header>
     {% block header %}
 
-                        <div class="navbar">
+        <div class="navbar">
             <div class="navbar-items">
                 <a class="" href="/">Retour sur le site</a>
                 <a class="" href="/admin">Accueil</a>
                 <a class="" href="/admin/news">Actualités</a>
                 <a class="" href="/admin/images">Images</a>
             </div>
-                <div class="navbar-right">
+            <div class="navbar-right">
                 <a href="/logout"> Déconnexion</a>
             </div>
         </div>
@@ -27,14 +27,14 @@
 </header>
 <div id="page-content">
     {% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    {% for category, message in messages %}
-      <div class="alert alert-{{ category }}" role="alert">
-          {{ message }}
-</div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     {% block content %}
     {% endblock %}
 </div>
@@ -43,6 +43,8 @@
     {% endblock %}
 </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
 <script src="/static/js/bootstrap.bundle.min.js"></script>
 </html>

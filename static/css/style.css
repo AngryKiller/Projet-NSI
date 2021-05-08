@@ -1,7 +1,8 @@
-#content{
+#content {
     padding-top: 50px;
 }
-div.card.news{
+
+div.card.news {
     margin-bottom: 20px;
     margin-top: 20px;
 }
@@ -21,12 +22,12 @@ div.card.news{
     align-items: center;
 }
 
-.navbar-right{
-        display: flex;
+.navbar-right {
+    display: flex;
     align-items: center;
 }
 
-.navbar>.navbar-items>a {
+.navbar > .navbar-items > a {
     color: white;
     text-decoration: none;
     text-align: center;
@@ -36,15 +37,15 @@ div.card.news{
     transition: 0.2s;
 }
 
-.navbar>.navbar-items>a:hover {
+.navbar > .navbar-items > a:hover {
     color: lightgrey;
 }
 
-.navbar>.navbar-items>a.active {
+.navbar > .navbar-items > a.active {
     border-bottom: 3px solid white;
 }
 
-.navbar>.navbar-right>a {
+.navbar > .navbar-right > a {
     color: white;
     text-decoration: none;
     text-align: center;
@@ -54,11 +55,11 @@ div.card.news{
     transition: 0.2s;
 }
 
-.navbar>.navbar-right>a:hover {
+.navbar > .navbar-right > a:hover {
     color: lightgrey;
 }
 
-.navbar>.navbar-right>button {
+.navbar > .navbar-right > button {
     color: white;
     text-decoration: none;
     text-align: center;
@@ -68,32 +69,34 @@ div.card.news{
     transition: 0.2s;
 }
 
-.navbar>.navbar-right>button:hover {
+.navbar > .navbar-right > button:hover {
     color: lightgrey;
 }
 
-button{
+button {
     -webkit-appearance: none;
 }
 
-.navbar>.navbar-right>a.active {
+.navbar > .navbar-right > a.active {
     background-color: #27ae60;
 }
 
-body{
+body {
     margin: 0;
 }
 
-#page-content{
+#page-content {
     padding: 50px;
 }
 
 html {
     box-sizing: border-box;
 }
-button{
+
+button {
     -webkit-appearance: normal;
 }
+
 h1,
 h2,
 h3,
@@ -160,16 +163,19 @@ a {
     margin-left: auto;
     margin-right: auto;
 }
-.btn-group-tabs{
+
+.btn-group-tabs {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
-.btn-group-tabs>.btn{
+
+.btn-group-tabs > .btn {
     width: 100%;
 }
+
 .btn-orange {
     border: 1px solid #e67e22;
     color: #e67e22;
@@ -189,15 +195,17 @@ a {
     background-color: #3498db;
     color: white;
 }
-.btn-red{
+
+.btn-red {
     color: #e74c3c;
     border: 1px solid #e74c3c;
 }
 
-.btn-red:hover{
+.btn-red:hover {
     background-color: #e74c3c;
     color: white;
 }
+
 .alert {
     padding: 20px;
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
@@ -223,7 +231,7 @@ a {
     padding-bottom: 25px;
 }
 
-.card-body>small {
+.card-body > small {
     color: white;
 }
 
@@ -247,28 +255,29 @@ a {
     margin: 20px;
 }
 
-.card-content>p {
+.card-content > p {
     color: white;
     font-family: 'Montserrat';
     padding-bottom: 10px;
     white-space: pre-wrap;
 }
-.card-content>small{
-        color: white;
+
+.card-content > small {
+    color: white;
     font-family: 'Montserrat';
 }
 
-.text-center{
+.text-center {
     text-align: center;
 }
 
-.title{
+.title {
     text-align: center;
     font-size: 40px;
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
-.description{
+.description {
     border: 1px solid lightgrey;
     padding: 10px;
     font-family: 'Montserrat';
@@ -277,15 +286,15 @@ a {
 }
 
 input, textarea, select, button {
-  width : 150px;
-  margin: 0;
+    width: 150px;
+    margin: 0;
 
-  -webkit-box-sizing: border-box; /* Pour les anciennes versions des navigateurs WebKit */
-     -moz-box-sizing: border-box; /* Pour tous les navigateurs Gecko */
-          box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Pour les anciennes versions des navigateurs WebKit */
+    -moz-box-sizing: border-box; /* Pour tous les navigateurs Gecko */
+    box-sizing: border-box;
 }
 
-input{
+input {
     padding: 10px;
     border-radius: 3px;
     border: 1px solid lightgrey;
@@ -295,60 +304,63 @@ input{
     transition: 0.4s;
 }
 
-.form{
+.form {
     display: block;
     text-align: center;
 }
 
-button{
+button {
     -webkit-appearance: none;
 }
 
-button:hover{
+button:hover {
     cursor: pointer;
 }
-input:focus{
+
+input:focus {
     outline: none;
     border: 1px solid grey;
 }
 
-.table-full{
+.table-full {
     width: 100%
 }
 
-table, tr, th{
+table, tr, th {
     border: 1px solid lightgrey;
     border-radius: 3px;
 }
 
-table{
+table {
     border-collapse: collapse;
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif
 }
 
-th{
+th {
     height: 50px;
 }
 
-td{
+td {
     text-align: center;
 }
 
 th, td {
-  padding: 10px;
-  text-align: left;
+    padding: 10px;
+    text-align: left;
 }
 
-tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
 
-.btn-block{
+.btn-block {
     display: block;
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif
 }
 
-textarea{
-        padding: 10px;
+textarea {
+    padding: 10px;
     border-radius: 3px;
     border: 1px solid lightgrey;
     margin: 10px;
@@ -357,27 +369,27 @@ textarea{
     transition: 0.1s;
 }
 
-textarea:focus{
+textarea:focus {
     outline: none;
     border: 1px solid grey;
 }
 
-.form-group label{
+.form-group label {
     display: block;
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
     font-size: 14px;
     padding-top: 5px;
 }
 
-.form-group input{
+.form-group input {
     margin-left: 0;
 }
 
-.form-group textarea{
+.form-group textarea {
     margin-left: 0;
 }
 
-.header{
+.header {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -387,14 +399,14 @@ textarea:focus{
     white-space: nowrap;
 }
 
-.header>.title{
+.header > .title {
     margin: O;
     text-align: center;
     padding: 0;
     display: block;
 }
 
-.image{
+.image {
     width: 48%;
     height: 100%;
     background-size: cover;
@@ -405,29 +417,29 @@ textarea:focus{
     transition: 0.5s;
 }
 
-.image:hover{
+.image:hover {
     transform: scale(1.03);
     cursor: pointer;
 }
 
-.image>h1{
+.image > h1 {
     text-align: center;
     color: white;
 }
 
-.row{
+.row {
     display: flex;
     justify-content: space-around;
 }
 
 .dropbtn {
-  background-color: transparent;
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
+    background-color: transparent;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }
 
 .dropbtn:hover, .dropbtn:focus {
@@ -435,30 +447,34 @@ textarea:focus{
 }
 
 .dropdown {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
+.dropdown-content a:hover {
+    background-color: #ddd
+}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+.show {
+    display: block;
+}
