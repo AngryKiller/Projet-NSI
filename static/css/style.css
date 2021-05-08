@@ -110,6 +110,7 @@ a {
     text-align: center;
     transition: 0.5s;
     height: 100%;
+    border-radius: 3px;
     background: transparent;
 }
 
@@ -297,6 +298,7 @@ input:focus{
 
 table, tr, th{
     border: 1px solid lightgrey;
+    border-radius: 3px;
 }
 
 table{
