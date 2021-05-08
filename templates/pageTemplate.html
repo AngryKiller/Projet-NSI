@@ -13,19 +13,18 @@
     {% block header %}
         <div class="navbar">
             <div class="navbar-items">
-                <a class="active" href="/">Accueil</a>
+                <a class="" href="/">Accueil</a>
                 <a class="" href="/images">Images</a>
             </div>
             <div class="navbar-right">
                 {% if user %}
                     <div class="dropdown">
-                        <a onclick="myFunction()" class="dropbtn">Mon compte ▼</a>
+                        <a onclick="myFunction()" class="dropbtn">{{ user[1] }} | Mon compte ▼</a>
                         <div id="myDropdown" class="dropdown-content">
-
-                            <a href="/logout"> Déconnexion</a>
                             {% if user[4] %}
                                 <a href='/admin'>Administration</a>
                             {% endif %}
+                            <a href="/logout"> Déconnexion</a>
                         </div>
                     </div>
                 {% else %}
