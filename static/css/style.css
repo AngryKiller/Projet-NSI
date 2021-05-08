@@ -275,3 +275,52 @@ input:focus{
     outline: none;
     border: 1px solid grey;
 }
+
+.table-full{
+    width: 100%
+}
+
+table, tr, th{
+    border: 1px solid lightgrey;
+}
+
+table{
+    border-collapse: collapse;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif
+}
+
+th{
+    height: 50px;
+}
+
+td{
+    text-align: center;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+
+.btn-block{
+    display: block;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif
+}
+
+textarea{
+        padding: 10px;
+    border-radius: 3px;
+    border: 1px solid lightgrey;
+    margin: 10px;
+    width: 600px;
+    height: 80px;
+    transition: 0.1s;
+}
+
+textarea:focus{
+    outline: none;
+    border: 1px solid grey;
+}

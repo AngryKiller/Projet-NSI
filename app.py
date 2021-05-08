@@ -22,7 +22,7 @@ def index():
 def registerRoute():
     if request.method == "POST":
         if register(request.form['username'], request.form['mail'], request.form['password']):
-            flash('Vous avez été inscrit avec succès', 'success')
+            flash('Vous avez été inscrit avec succès', 'green')
             return redirect('/')
     else:
         return render_template('register.html')
@@ -72,7 +72,7 @@ def deletenewsroute():
     if 'user' in session and isAdmin(session['user']):
         id = request.args.get('id', '')
         deletearticle(id)
-        flash("L'actualité a été supprimée", 'success')
+        flash("L'actualité a été supprimée", 'green')
         return redirect('/admin/news')
     else:
         return redirect('/')
@@ -83,10 +83,10 @@ def addnewsroute():
         if request.method == "POST":
             res = addarticle(request.form['newsTitle'], request.form['newsContent'], session['user'])
             if res == True:
-                flash("L'actualité a été ajoutée", "success")
+                flash("L'actualité a été ajoutée", "green")
                 return redirect('/admin/news')
             else:
-                flash("Une erreur est survenue lors de l'ajout", "danger")
+                flash("Une erreur est survenue lors de l'ajout", "red")
                 return redirect('/admin/news')
         else:
             return render_template('admin/edit.html', user=getUser(session['user']))
@@ -99,10 +99,10 @@ def editnewsroute():
         if request.method == "POST":
             res = editarticle(request.form['id'], request.form['newsTitle'], request.form['newsContent'])
             if res == True:
-                flash("L'actualité a été modifiée", "success")
+                flash("L'actualité a été modifiée", "green")
                 return redirect('/admin/news')
             else:
-                flash("Une erreur est survenue lors de la modification", "danger")
+                flash("Une erreur est survenue lors de la modification", "red")
                 return redirect('/admin/news')
         else:
             id = request.args.get('id', '')

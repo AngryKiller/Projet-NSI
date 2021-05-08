@@ -3,9 +3,11 @@
 {% block content %}
     <h1 class="title">Actualités</h1>
     <br>
-    <a href="/admin/news/add" class="btn btn-lg btn-block btn-outline-success">Ajouter un article</a>
+    <a href="/admin/news/add" class="btn btn-xl btn-green btn-block">Ajouter un article</a>
     <br>
-    <table class="table table-striped">
+    <br>
+    <br>
+    <table class="table-full">
   <thead>
     <tr>
       <th scope="col">Titre</th>
@@ -19,8 +21,8 @@
       <th scope="row">{{ article[1] }}</th>
       <td>Digouraye</td>
       <td>
-  <a href="/admin/news/edit?id={{ article[0] }}"  class="btn btn-primary">Modifier</a>
-  <a href="/admin/news/delete?id={{ article[0] }}" class="btn btn-danger">Supprimer</a>
+  <a href="/admin/news/edit?id={{ article[0] }}"  class="btn btn-blue">Modifier</a>
+  <a href="/admin/news/delete?id={{ article[0] }}" class="btn btn-red">Supprimer</a>
 </td>
     </tr>
   {% endfor %}

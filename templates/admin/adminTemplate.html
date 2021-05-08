@@ -3,46 +3,28 @@
 <head>
     {% block head %}
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="/static/css/style.css">
-        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400" rel="stylesheet">
         <title>{% block title %}{% endblock %}</title>
     {% endblock %}
 </head>
 <body>
 <header>
     {% block header %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Administration</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-        <a class="nav-link" href="/">Retour sur le site <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/admin">Accueil <span class="sr-only">(current)</span></a>
-      </li>
-              <li class="nav-item active">
-        <a class="nav-link" href="/admin/news">Actualités <span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
-      <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ user[1] }}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Mon profil</a>
-          <a class="dropdown-item" href="/logout">Se déconnecter</a>
+                        <div class="navbar">
+            <div class="navbar-items">
+                <a class="" href="/">Retour sur le site</a>
+                <a class="" href="/admin">Accueil</a>
+                <a class="" href="/admin/news">Actualités</a>
+            </div>
+                <div class="navbar-right">
+                <a href="/logout"> Déconnexion</a>
+            </div>
         </div>
-      </div>
-  </div>
-</nav>
     {% endblock %}
 </header>
-<div class="container" id="content">
+<div id="page-content">
     {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
     {% for category, message in messages %}
