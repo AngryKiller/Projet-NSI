@@ -8,7 +8,6 @@
     <hr>
     <p class="description">{{ settings[2] }}</p>
 
-
     <h1 class="text-center">Actualités</h1>
     <hr>
     {% for article in news: %}
@@ -21,7 +20,7 @@
                     <div class="card-content">
                     <p>{{ article[2] }}</p>
                         <hr>
-                        <small>écrit par {{ article[3] }}</small>
+                        <small>écrit par {{ idusername(article[3]) }}</small>
                     </div>
             </div>
         </div>

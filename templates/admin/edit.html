@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1 class="title">{% if edit: %}Modifier {% else: %}Ajouter {% endif %}un article</h1>
-    <br>
+    <hr>
     <div class="form">
         <form action="/admin/news/{% if edit: %}edit{% else: %}add{% endif %}" method="post">
     {% if edit: %}

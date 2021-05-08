@@ -49,3 +49,10 @@ def isAdmin(userid):
     val = (userid, )
     cursor.execute(sql, val)
     return cursor.fetchone()[0]
+
+def idusername(userid):
+    cursor = cnx.cursor()
+    sql = "SELECT username FROM users WHERE id=%s"
+    val = (userid, )
+    cursor.execute(sql, val)
+    return cursor.fetchone()[0]

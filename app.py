@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, flash, session, url_for, send_from_directory
 from util.news import getNews, deletearticle, addarticle, getArticle, editarticle
-from util.users import register, login, getUser, isAdmin
+from util.users import register, login, getUser, isAdmin, idusername
 from util.shorten import shortenGuest, getlinkfromid
 from util.settings import getSettings, updateSettings
 from util.images import getImages, deleteimage, addimage
@@ -21,7 +21,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 app.secret_key = b'_5eey"F3z\digouc]/'
 
-
+app.jinja_env.globals.update(idusername=idusername)
 @app.route('/')
 def index():
     if 'user' in session:
