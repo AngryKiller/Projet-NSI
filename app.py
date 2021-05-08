@@ -180,7 +180,7 @@ def images():
     if 'user' in session:
         return render_template('images.html', images=getImages(), user=getUser(session['user']), settings=getSettings())
     else:
-        return render_template('images.html', news=getImages(), settings=getSettings())
+        return render_template('images.html', images=getImages(), settings=getSettings())
 
 
 @app.route('/admin/images')

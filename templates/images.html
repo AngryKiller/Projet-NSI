@@ -2,8 +2,6 @@
 {% block content %}
     <h1 class="text-center">Images</h1>
     <hr>
-
-
         <div class="row">
             {% for image in images: %}
             <div onclick="window.open('/img/{{ image[2] }}', '_blank')" class="image" style="background-image: url('img/{{ image[2] }}')">
