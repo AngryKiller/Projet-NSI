@@ -251,6 +251,7 @@ a {
     color: white;
     font-family: 'Montserrat';
     padding-bottom: 10px;
+    white-space: pre-wrap;
 }
 .card-content>small{
         color: white;
@@ -272,6 +273,7 @@ a {
     padding: 10px;
     font-family: 'Montserrat';
     border-radius: 3px;
+    white-space: pre-wrap;
 }
 
 input, textarea, select, button {
@@ -378,6 +380,7 @@ textarea:focus{
 .header{
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     width: 100%;
     height: 400px;
     line-height: 400px;
@@ -393,13 +396,23 @@ textarea:focus{
 
 .image{
     width: 48%;
-    height: 500px;
+    height: 100%;
     background-size: cover;
+    background-position: center;
     line-height: 500px;
+    border-radius: 8px;
+    margin: 20px;
+    transition: 0.5s;
+}
+
+.image:hover{
+    transform: scale(1.03);
+    cursor: pointer;
 }
 
 .image>h1{
     text-align: center;
+    color: white;
 }
 
 .row{

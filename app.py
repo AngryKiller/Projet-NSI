@@ -3,6 +3,7 @@ from util.news import getNews, deletearticle, addarticle, getArticle, editarticl
 from util.users import register, login, getUser, isAdmin
 from util.shorten import shortenGuest, getlinkfromid
 from util.settings import getSettings, updateSettings
+from util.images import getImages, deleteimage, addimage
 from werkzeug.utils import secure_filename
 
 import os
@@ -174,6 +175,50 @@ def dated_url_for(endpoint, **values):
             values['q'] = int(os.stat(file_path).st_mtime)
     return url_for(endpoint, **values)
 
+@app.route('/images')
+def images():
+    if 'user' in session:
+        return render_template('images.html', images=getImages(), user=getUser(session['user']), settings=getSettings())
+    else:
+        return render_template('images.html', news=getImages(), settings=getSettings())
+
+
+@app.route('/admin/images')
+def adminImages():
+    if 'user' in session and isAdmin(session['user']):
+        return render_template('admin/images.html', images=getImages(), user=getUser(session['user']))
+    else:
+        return redirect('/')
+
+@app.route('/admin/images/delete')
+def deleteimageroute():
+    if 'user' in session and isAdmin(session['user']):
+        id = request.args.get('id', '')
+        deleteimage(id)
+        flash("L'image a été supprimée", 'green')
+        return redirect('/admin/images')
+    else:
+        return redirect('/')
+
+
+@app.route('/admin/images/add', methods=['POST', 'GET'])
+def imageAdd():
+    if 'user' in session and isAdmin(session['user']):
+        if request.method == 'POST':
+            file = request.files['image']
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                res = addimage(request.form['imageTitle'], filename)
+                flash("Image ajoutée!", 'green')
+                return redirect('/admin/images')
+            else:
+                flash('Une erreur est survenue', 'red')
+                return redirect('/admin/images')
+        else:
+            return render_template('admin/addimage.html', user=getUser(session['user']), settings=getSettings())
+    else:
+        return redirect('/')
 
 
 @app.route('/digou')
