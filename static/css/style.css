@@ -478,3 +478,9 @@ textarea:focus {
 .show {
     display: block;
 }
+
+#footer>p{
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    text-align: center;
+
+}
