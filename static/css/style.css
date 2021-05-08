@@ -41,7 +41,7 @@ div.card.news{
 }
 
 .navbar>.navbar-items>a.active {
-    background-color: #27ae60;
+    border-bottom: 3px solid white;
 }
 
 .navbar>.navbar-right>a {
