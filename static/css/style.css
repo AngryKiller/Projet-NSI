@@ -235,6 +235,7 @@ a {
 .title{
     text-align: center;
     font-size: 40px;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
 .description{
@@ -342,4 +343,20 @@ textarea:focus{
 
 .form-group textarea{
     margin-left: 0;
+}
+
+.header{
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 400px;
+    line-height: 400px;
+    white-space: nowrap;
+}
+
+.header>.title{
+    margin: O;
+    text-align: center;
+    padding: 0;
+    display: block;
 }

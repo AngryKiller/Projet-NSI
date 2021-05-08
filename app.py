@@ -1,11 +1,22 @@
-from flask import Flask, render_template, request, redirect, flash, session, url_for
+from flask import Flask, render_template, request, redirect, flash, session, url_for, send_from_directory
 from util.news import getNews, deletearticle, addarticle, getArticle, editarticle
 from util.users import register, login, getUser, isAdmin
 from util.shorten import shortenGuest, getlinkfromid
 from util.settings import getSettings, updateSettings
+from werkzeug.utils import secure_filename
+
 import os
 
+UPLOAD_FOLDER = 'static/img'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 app = Flask(__name__, static_url_path='/static')
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 app.secret_key = b'_5eey"F3z\digouc]/'
 
@@ -25,9 +36,9 @@ def registerRoute():
             flash('Vous avez été inscrit avec succès', 'green')
             return redirect('/')
     else:
-        return render_template('register.html')
+        return render_template('register.html', settings=getSettings())
 
-    return render_template('register.html')
+    return render_template('register.html', settings=getSettings())
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -42,9 +53,9 @@ def loginRoute():
             flash('Utilisateur ou mot de passe incorrect', 'red')
             return redirect('/login')
     else:
-        return render_template('login.html')
+        return render_template('login.html', settings=getSettings())
 
-    return render_template('login.html')
+    return render_template('login.html', settings=getSettings())
 
 
 @app.route('/logout')
@@ -52,18 +63,30 @@ def logoutRoute():
     session.pop('user', None)
     return redirect('/')
 
+@app.route('/img/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
 
 @app.route('/admin', methods=['POST', 'GET'])
 def adminRoute():
     if 'user' in session and isAdmin(session['user']):
         if request.method == 'POST':
-            res = updateSettings(request.form['websiteTitle'], request.form['websiteDesc'])
-            if res == True:
-                flash('Paramètres mis à jour!', 'green')
+            file = request.files['banner']
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                res = updateSettings(request.form['websiteTitle'], request.form['websiteDesc'], filename)
+                flash("Paramètres mis à jour!", 'green')
                 return redirect('/admin')
             else:
-                flash('Une erreur est survenue', 'red')
-                return redirect('/admin')
+                res = updateSettings(request.form['websiteTitle'], request.form['websiteDesc'], False)
+                if res == True:
+                    flash('Paramètres mis à jour!', 'green')
+                    return redirect('/admin')
+                else:
+                    flash('Une erreur est survenue', 'red')
+                    return redirect('/admin')
         else:
             return render_template('admin/index.html', user=getUser(session['user']), settings=getSettings())
     else:

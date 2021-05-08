@@ -15,9 +15,16 @@ def getSettings():
     return cursor.fetchone()
 
 
-def updateSettings(title, desc):
-    cursor = cnx.cursor()
-    sql = "UPDATE settings SET title=%s, description=%s WHERE id=1"
-    val = (title, desc, )
-    cursor.execute(sql, val)
-    return True
+def updateSettings(title, desc, banner):
+    if banner:
+        cursor = cnx.cursor()
+        sql = "UPDATE settings SET title=%s, description=%s, filename=%s WHERE id=1"
+        val = (title, desc, banner, )
+        cursor.execute(sql, val)
+        return True
+    else:
+        cursor = cnx.cursor()
+        sql = "UPDATE settings SET title=%s, description=%s WHERE id=1"
+        val = (title, desc,)
+        cursor.execute(sql, val)
+        return True

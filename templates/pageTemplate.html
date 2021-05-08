@@ -30,7 +30,11 @@
             </div>
         </div>
     {% endblock %}
+    <div class="header" style="background-image: url('/img/{{ settings[3] }}')">
+<span class="title">{{ settings[1] }}</span>
+    </div>
 </header>
+
 <div id="page-content">
     {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
