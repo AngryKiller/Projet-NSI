@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, flash, session, url
 from util.news import getNews, deletearticle, addarticle, getArticle, editarticle
 from util.users import register, login, getUser, isAdmin
 from util.shorten import shortenGuest, getlinkfromid
-from util.settings import getSettings
+from util.settings import getSettings, updateSettings
 import os
 
 app = Flask(__name__, static_url_path='/static')
@@ -53,12 +53,25 @@ def logoutRoute():
     return redirect('/')
 
 
-@app.route('/admin')
+@app.route('/admin', methods=['POST', 'GET'])
 def adminRoute():
     if 'user' in session and isAdmin(session['user']):
-        return render_template('admin/index.html', user=getUser(session['user']))
+        if request.method == 'POST':
+            res = updateSettings(request.form['websiteTitle'], request.form['websiteDesc'])
+            if res == True:
+                flash('Paramètres mis à jour!', 'green')
+                return redirect('/admin')
+            else:
+                flash('Une erreur est survenue', 'red')
+                return redirect('/admin')
+        else:
+            return render_template('admin/index.html', user=getUser(session['user']), settings=getSettings())
     else:
         return redirect('/')
+
+@app.route('/admin/')
+def adminRedirect():
+    return redirect('/admin')
 
 @app.route('/admin/news')
 def adminNewsRoute():

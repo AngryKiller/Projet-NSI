@@ -1,5 +1,21 @@
 {% extends "admin/adminTemplate.html" %}
 
 {% block content %}
-<h1>Administration</h1>
+<h1 class="title">Administration</h1>
+
+        <div class="">
+        <form action="/admin" method="post">
+      <div class="form-group">
+          <label for="websiteTitle">Titre du site web</label>
+    <input type="text" class="form-control" id="newsTitle" placeholder="Titre du site web" name="websiteTitle" value="{{ settings[1] }}">
+  </div>
+      <div class="form-group">
+          <label for="websiteDesc">Description du site web</label>
+    <textarea class="form-control" id="newsContent" rows="3" placeholder="Description" name="websiteDesc">{{ settings[2] }}</textarea>
+  </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-blue">Appliquer</button>
+    </div>
+    </form>
+    </div>
 {% endblock %}

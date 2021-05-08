@@ -271,6 +271,10 @@ input{
 button{
     -webkit-appearance: none;
 }
+
+button:hover{
+    cursor: pointer;
+}
 input:focus{
     outline: none;
     border: 1px solid grey;
@@ -323,4 +327,19 @@ textarea{
 textarea:focus{
     outline: none;
     border: 1px solid grey;
+}
+
+.form-group label{
+    display: block;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    font-size: 14px;
+    padding-top: 5px;
+}
+
+.form-group input{
+    margin-left: 0;
+}
+
+.form-group textarea{
+    margin-left: 0;
 }

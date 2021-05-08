@@ -13,3 +13,11 @@ def getSettings():
     sql = "SELECT * FROM settings WHERE id=1"
     cursor.execute(sql)
     return cursor.fetchone()
+
+
+def updateSettings(title, desc):
+    cursor = cnx.cursor()
+    sql = "UPDATE settings SET title=%s, description=%s WHERE id=1"
+    val = (title, desc, )
+    cursor.execute(sql, val)
+    return True
