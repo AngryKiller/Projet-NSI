@@ -10,9 +10,10 @@ div.card.news{
     transition: 0.5s;
     display: flex;
     align-items: center;
-    width: 100%;
     padding: 20px;
+    justify-content: space-between;
     background: grey;
+    height: 30px;
 }
 
 .navbar-items {
@@ -23,7 +24,6 @@ div.card.news{
 .navbar-right{
         display: flex;
     align-items: center;
-    margin-left: 70%;
 }
 
 .navbar>.navbar-items>a {
@@ -33,6 +33,11 @@ div.card.news{
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     padding: 10px;
+    transition: 0.2s;
+}
+
+.navbar>.navbar-items>a:hover {
+    color: lightgrey;
 }
 
 .navbar>.navbar-items>a.active {
@@ -46,6 +51,11 @@ div.card.news{
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     padding: 10px;
+    transition: 0.2s;
+}
+
+.navbar>.navbar-right>a:hover {
+    color: lightgrey;
 }
 
 .navbar>.navbar-right>a.active {
