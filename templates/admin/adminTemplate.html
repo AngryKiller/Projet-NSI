@@ -4,6 +4,8 @@
     {% block head %}
         <meta charset="UTF-8">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Steve Labus">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400" rel="stylesheet">
         <title>{% block title %}{% endblock %}</title>
     {% endblock %}
