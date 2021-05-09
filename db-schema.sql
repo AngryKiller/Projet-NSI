@@ -93,6 +93,9 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `settings` (`id`, `title`, `description`, `filename`)
+VALUES
+	(1, 'Blog Minecraft', 'Ce blog est dédié a l\'actualité et des astuces du jeu Minecraft, et des images du jeu.\r\n\r\nMinecraft est un jeu vidéo de type « bac à sable » développé par le Suédois Markus Persson, alias Notch, puis par la société Mojang Studios. Il s\'agit d\'un univers composé de voxels et généré aléatoirement, qui intègre un système d\'artisanat axé sur l\'exploitation puis la transformation de ressources naturelles.', 'Toits-de-maisons.png');
 
 
 

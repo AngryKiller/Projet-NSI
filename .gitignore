@@ -6,4 +6,5 @@ __pycache__
 
 static/img/*
 !static/img/.gitkeep
+!static/img/Toits-de-maisons.png
 db-schema-data.sql
